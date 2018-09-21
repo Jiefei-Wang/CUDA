@@ -7,7 +7,7 @@ template <class T> void print(T* a,int length, char* note) {
 	}
 	cout << a[length - 1]<<endl;
 }
-extern "C" #LibExport
+extern "C" LibExport
 void upload(double* dataFrame, double * rowInd, double * colInd, double * size, double* offset, double* address) {
 	LARGEINDEX * size_l = getIndexFromR(size, 5);
 	LARGEINDEX * rowInd_l = getIndexFromR(rowInd, size_l[1]);
@@ -19,7 +19,7 @@ void upload(double* dataFrame, double * rowInd, double * colInd, double * size, 
 	
 	dataMatrix.setPackedInfo((LARGEINDEX *)address);
 }
-extern "C" #LibExport
+extern "C" LibExport
 void download(double* data, double * rowInd, double * colInd, double * address) {
 	SparseMatrix<double> dataMatrix((LARGEINDEX *)address);
 	dataMatrix.deviceToHost();
@@ -47,7 +47,7 @@ int * cpyfunc(LARGEINDEX* src, int n) {
 	return(target);
 
 }
-extern "C" #LibExport
+extern "C" LibExport
 void colSums( int *direction,double * address, double * result)
 {
 	int nresult;

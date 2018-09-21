@@ -44,7 +44,7 @@ rcppcuda.so: ${OBJECTS}
 	$(NVCC) ${PKG_LIBS} -o kernel.dll --shared $(cu_sharedlibs) -ccbin ${VS_SUPPORT}
 	
 %.o: %.cpp $(cpp_sources)
-			$(CXX) $< -c -fPIC -I$(R_INC) -I$(RCPP_INC)   -std=c++11 -I.
+			$(CXX) $< -c -fPIC -I$(R_INC) -I$(RCPP_INC) -I$(RCPP_INC_EXT)  -std=c++11 -I.
 
 %.obj: %.cu $(cu_sources)
-			$(NVCC) $(NVCC_FLAGS) -I$(CUDA_INC) $< -c  -std=c++11 -I.  
+			$(NVCC) $(NVCC_FLAGS) -I$(CUDA_INC) -I$(R_INC)   $< -c  -std=c++11 -I.  
