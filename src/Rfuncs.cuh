@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "CommonHeader.cuh"
+#include "commonHeader.cuh"
 #include "MatrixOperation.cuh"
 #include "SparseMatrix.cuh"
 

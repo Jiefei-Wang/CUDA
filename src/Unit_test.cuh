@@ -2,7 +2,7 @@
 #include "device_launch_parameters.h"
 #include "cuda_runtime.h"
 #include <iostream>
-#include "CommonHeader.cuh"
+#include "commonHeader.cuh"
 
 #include "Test_tools.cuh"
 #include "Rfuncs.cuh"

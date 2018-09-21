@@ -1,5 +1,5 @@
 #pragma once
-#include "CommonHeader.cuh"
+#include "commonHeader.cuh"
 #include "Tools.cuh"
 
 

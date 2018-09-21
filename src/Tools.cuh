@@ -2,7 +2,7 @@
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include <iostream>
-#include "CommonHeader.cuh"
+#include "commonHeader.cuh"
 
 
 void errorHandle(cudaError_t error,std::string msg);

@@ -3,7 +3,7 @@
 #include "device_launch_parameters.h"
 #include <iostream>
 #include "Tools.cuh"
-#include "CommonHeader.cuh"
+#include "commonHeader.cuh"
 
 
 
