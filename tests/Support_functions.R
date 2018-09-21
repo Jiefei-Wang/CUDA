@@ -61,7 +61,6 @@ test_upload<-function(k=10){
 
 test_matrixSum<-function(k=10,rowSum=T){
   dyn.load(dll_lib)
-  k=1000
   test.data=sparseData(row=k,col=k,nonzero=k*k/2)
   m=test.data$sparseMatrix
   offset=10
