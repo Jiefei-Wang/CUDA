@@ -7,8 +7,7 @@ test_upload<-function(k=10){
 
 test.data=sparseData(row=k,col=k,nonzero=k*k/2)
 
-
-dyn.load("cuda matrix\\x64\\Debug\\Matrix_class.dll")
+dyn.load("src\\kernel.dll")
 offset=10
 address=as.double(rep(0,9))
 result=.C("upload",
@@ -33,7 +32,7 @@ if(sum(test.data$dataframe-downloaded.data)+
   print("Upload check failure")
 }
 
-dyn.unload("cuda matrix\\x64\\Debug\\Matrix_class.dll")
+dyn.unload("src\\kernel.dll")
 }
 
 test_upload(k=100)

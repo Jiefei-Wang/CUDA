@@ -1,0 +1,44 @@
+
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+#include <stdio.h>
+#include <iostream>
+#include <ctime>
+#include <cusparse_v2.h>
+
+
+#include "SparseMatrix.cuh"
+#include "Unit_test.cuh"
+#include "MatrixOperation.cuh"
+
+#include "Rfuncs.cuh"
+#include "Test_tools.cuh"
+
+
+
+/*
+int main() {
+	//test_matrixADD();
+	///test_speed_class();
+	//test_speed_element();
+	//test_matrixUpload();
+	cusparseHandle_t handle=0;
+	cusparseCreate(&handle);
+	return 0;
+}*/
+
+
+
+
+
+int main(int argc, char **argv)
+{
+	bool isCol = false;
+
+	int M = 10000;
+	int N = 10000;
+	test_colsum(M,N,isCol);
+	//test_matrixUpload();
+	
+	return 0;
+}
