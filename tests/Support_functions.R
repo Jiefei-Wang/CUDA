@@ -1,5 +1,5 @@
 library("Matrix")
-dll_lib="src\\kernel.dll"
+
 
 sparseData<-function(row=10,col=10,nonzero=5){
 mydata=matrix(0,row,col)
