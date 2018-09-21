@@ -3,7 +3,6 @@
 #include "device_launch_parameters.h"
 #include <iostream>
 #include "Tools.cuh"
-#include "CUDA_manager.cuh"
 #include "CommonHeader.cuh"
 
 

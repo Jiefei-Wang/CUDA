@@ -14,7 +14,7 @@ NVCC = "${CUDA_HOME}/bin/nvcc"
 CUDA_INC = "${CUDA_HOME}/include"
 CUDA_LIB = "${CUDA_HOME}/lib64"
 
-VS_SUPPORT= "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64"
+VS_SUPPORT= "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x64"
 
 
 # This defines what the shared object libraries will be
@@ -47,4 +47,4 @@ rcppcuda.so: ${OBJECTS}
 			$(CXX) $< -c -fPIC -I$(R_INC) -I$(RCPP_INC)   -std=c++11 -I.
 
 %.obj: %.cu $(cu_sources)
-			$(NVCC) $(NVCC_FLAGS) -I$(CUDA_INC) -o$< -c  -std=c++11 -I.  
+			$(NVCC) $(NVCC_FLAGS) -I$(CUDA_INC) $< -c  -std=c++11 -I.  

@@ -16,18 +16,6 @@
 
 
 
-/*
-int main() {
-	//test_matrixADD();
-	///test_speed_class();
-	//test_speed_element();
-	//test_matrixUpload();
-	cusparseHandle_t handle=0;
-	cusparseCreate(&handle);
-	return 0;
-}*/
-
-
 
 
 

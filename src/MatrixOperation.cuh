@@ -1,7 +1,5 @@
 #pragma once
 #include "CommonHeader.cuh"
-#define __MatrixOperation__
-
 #include "Tools.cuh"
 
 
