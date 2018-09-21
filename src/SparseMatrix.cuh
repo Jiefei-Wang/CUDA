@@ -51,6 +51,3 @@ public:
 };
 
 
-//template class SparseMatrix<int>;
-//template class SparseMatrix<float>;
-template class SparseMatrix<double>;

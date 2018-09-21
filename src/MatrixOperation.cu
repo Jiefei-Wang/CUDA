@@ -29,6 +29,8 @@ void CUDA_matrixSum_kernel(int M, int N, int totalANnz, T *dCscValA, Ind *dCscRo
 }
 
 
+
+
 template<class T>
 void CUDA_matrixSum(int M, int N, int totalANnz, T *dCscValA, int *dCscRowPtrA, int *dCscColIndA,T* result, bool isCol) {
 	
@@ -91,3 +93,20 @@ void CUDA_matrixSum(int M, int N, int totalANnz, T *dCscValA, int *dCscRowPtrA, 
 	cusparseDestroyMatDescr(Adescr);
 	cusparseDestroy(handle);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+template __global__ void CUDA_matrixSum_kernel(int M, int N, int totalANnz, float *dCscValA, LARGEINDEX *dCscRowPtrA, LARGEINDEX *dCscColIndA, float* result, bool isCol = false);
+template __global__ void CUDA_matrixSum_kernel(int M, int N, int totalANnz, float *dCscValA, int *dCscRowPtrA, int *dCscColIndA, float* result, bool isCol = false);
+template __global__ void CUDA_matrixSum_kernel(int M, int N, int totalANnz, double *dCscValA, LARGEINDEX *dCscRowPtrA, LARGEINDEX *dCscColIndA, float* result, bool isCol = false);
+template void CUDA_matrixSum(int M, int N, int totalANnz, double *dCscValA, int *dCscRowPtrA, int *dCscColIndA, double* result, bool isCol = false);
