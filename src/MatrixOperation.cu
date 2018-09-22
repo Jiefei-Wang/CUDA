@@ -58,7 +58,6 @@ void CUDA_matrixSum(int M, int N, int totalANnz, T *dCscValA, int *dCscRowPtrA, 
 	for (size_t i = 0; i < K1; ++i) {
 		B[i] = 1;
 	}
-	
 
 	cudaMalloc((void **)&dB, sizeof(*B) * K1);
 	cudaMalloc((void **)&dC, sizeof(*dC) * K2);
