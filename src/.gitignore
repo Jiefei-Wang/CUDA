@@ -10,3 +10,11 @@ kernel.exp
 kernel.lib
 kernel.obj
 read_test_data.obj
+MatrixOperation.o
+Rfuncs.o
+SparseMatrix.o
+Test_tools.o
+Tools.o
+Unit_test_C.o
+Unit_test_R.o
+read_test_data.o

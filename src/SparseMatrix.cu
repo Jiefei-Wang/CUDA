@@ -25,7 +25,7 @@ SparseMatrix<T>::SparseMatrix(LARGEINDEX * size, LARGEINDEX * offset, Deviceloc 
 	}
 }
 template <class T> __alldev__
-SparseMatrix<T>::SparseMatrix(T* dataFrame, LARGEINDEX* rowInd, LARGEINDEX* colInd, LARGEINDEX* size, LARGEINDEX * offset, Deviceloc location = Deviceloc::Auto) {
+SparseMatrix<T>::SparseMatrix(T* dataFrame, LARGEINDEX* rowInd, LARGEINDEX* colInd, LARGEINDEX* size, LARGEINDEX * offset, Deviceloc location) {
 	 matrixSize = size[0];
 	 rowIndexLen = size[1];
 	 colIndexLen = size[2];

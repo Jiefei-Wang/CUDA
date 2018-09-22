@@ -20,20 +20,21 @@ PKG_LIBS= -L${CUDA_LIB} -lcudart_static -lcusparse
 NVCC_FLAGS = -Xcompiler "-fPIC"  -I$(R_INCLUDE_DIR)
 
 ### Define objects
-cu_sources := $(wildcard *cu)
-cu_sharedlibs := $(patsubst %.cu, %.o,$(cu_sources))
+CU_SOURCES := $(wildcard *cu)
+CU_SHAREDLIBS := $(patsubst %.cu, %.o,$(CU_SOURCES))
 
-cpp_sources := $(wildcard *.cpp)
-cpp_sharedlibs := $(patsubst %.cpp, %.o, $(cpp_sources))
+CPP_SOURCES := $(wildcard *.cpp)
+CPP_SHAREDLIBS := $(patsubst %.cpp, %.o, $(CPP_SOURCES))
 
-OBJECTS = $(cu_sharedlibs) $(cpp_sharedlibs)
+OBJECTS = $(CU_SHAREDLIBS) $(CPP_SHAREDLIBS)
 
 all : rcppcuda.so
 
 rcppcuda.so: $(OBJECTS)
+	 $(NVCC) ${PKG_LIBS} -o CUDA.so --shared $(CU_SHAREDLIBS)
 
-%.o: %.cpp $(cpp_sources)
+%.o: %.cpp $(CPP_SOURCES)
 			$(CXX) $< -c -fPIC -I$(R_INCLUDE_DIR) -I$(RCPP_INC)  -std=c++11 -I.
 
-%.o: %.cu $(cu_sources)
+%.o: %.cu $(CU_SOURCES)
 			$(NVCC) $(NVCC_FLAGS) -I$(CUDA_INC) $< -c  -std=c++11 -I.
