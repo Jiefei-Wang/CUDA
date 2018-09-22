@@ -51,7 +51,7 @@ void CUDA_matrixSum(int M, int N, int totalANnz, T *dCscValA, int *dCscRowPtrA, 
 		K1 = N;
 		K2 = M;
 	}
-
+	
 	T *B, *dB;
 	T *dC;
 	B = new T[K1];
