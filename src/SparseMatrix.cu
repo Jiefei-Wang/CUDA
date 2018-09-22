@@ -202,6 +202,4 @@ void SparseMatrix<T>::print()
 }
 
 
-//template class SparseMatrix<int>;
-//template class SparseMatrix<float>;
-template class SparseMatrix<double>;
+
