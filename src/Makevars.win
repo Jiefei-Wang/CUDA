@@ -31,6 +31,8 @@ cpp_sharedlibs := $(cpp_sources:.cpp=.o)
 
 OBJECTS = $(cu_sharedlibs) $(cpp_sharedlibs)
 
+$(warning $(cu_sources))
+
 all: rcppcuda.so
 
 rcppcuda.so: ${OBJECTS}
