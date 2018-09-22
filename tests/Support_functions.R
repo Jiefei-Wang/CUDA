@@ -30,7 +30,7 @@ generate_test_data<-function(test.data){
 #Check if the CUDA function works.
 test_upload<-function(k=10){
   test.data=sparseData(row=k,col=k,nonzero=k*k/2)
-  dyn.load(dll_lib)
+  dyn.load(lib_file)
   offset=10
   address=as.double(rep(0,9))
   result=.C("upload",
@@ -55,11 +55,11 @@ test_upload<-function(k=10){
     message("Upload check failure")
   }
   
-  dyn.unload(dll_lib)
+  dyn.unload(lib_file)
 }
 
 test_matrixSum<-function(k=10,rowSum=T){
-  dyn.load(dll_lib)
+  dyn.load(lib_file)
   test.data=sparseData(row=k,col=k,nonzero=k*k/2)
   m=test.data$sparseMatrix
   offset=10
@@ -129,5 +129,5 @@ test_matrixSum<-function(k=10,rowSum=T){
       message("Column sum check passed")
     }
   }
-  dyn.unload(dll_lib)
+  dyn.unload(lib_file)
 }

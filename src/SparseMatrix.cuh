@@ -25,6 +25,7 @@ public:
 	LARGEINDEX * rowInd = nullptr;
 	LARGEINDEX * colInd = nullptr;
 
+
 	T * dev_matrixData = nullptr;
 	LARGEINDEX * dev_rowInd = nullptr;
 	LARGEINDEX * dev_colInd = nullptr;

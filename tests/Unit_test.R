@@ -1,9 +1,10 @@
 #Load the test functions
-source("tests\\Support_functions.R")
+source("tests/Support_functions.R")
 
 #The file location, it should be different in Linux.
-dll_lib="src\\kernel.dll"
-
+dll_lib="src/kernel.dll"
+SO_lib="src/CUDA.so"
+lib_file=SO_lib
 #k is the dimension of the matrix
 #test_upload:Test the communication between GPU and CPU
 #test_matrixSum: Test the matrix row and column sum and compare the operation times
