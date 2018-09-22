@@ -3,7 +3,7 @@
 #include "CommonHeader.cuh"
 #include "MatrixOperation.cuh"
 #include "SparseMatrix.cuh"
-#include "R_ext\libextern.h"
+#include "R_ext/libextern.h"
 
 extern "C" LibExport
 void upload(double* dataFrame, double * rowInd, double * colInd, double * size, double* offset, double* address);
