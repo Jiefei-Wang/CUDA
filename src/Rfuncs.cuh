@@ -11,3 +11,5 @@ extern "C" LibExport
 void download(double* data, double * rowInd, double * colInd, double * address);
 extern "C" LibExport
 void colSums( int *direction, double * address,double *result);
+
+
