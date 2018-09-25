@@ -2,9 +2,7 @@
 # source("tests/Support_functions.R")
 # 
 # #The file location, it should be different in Linux.
-# dll_lib="src/kernel.dll"
-# SO_lib="src/CUDA.so"
-# lib_file=dll_lib
+
 # #k is the dimension of the matrix
 # #test_upload:Test the communication between GPU and CPU
 # #test_matrixSum: Test the matrix row and column sum and compare the operation times
@@ -13,8 +11,10 @@
 # test_matrixSum(k=1000,rowSum=F)
 
 
-
 test_that("Matrix upload and download",{
+  dll_lib="src/kernel.dll"
+  SO_lib="src/CUDA.so"
+  lib_file=dll_lib
   dyn.load(lib_file)
   k=100
   test.data=sparseData(row=k,col=k,nonzero=k*k/2)
@@ -24,11 +24,26 @@ test_that("Matrix upload and download",{
   mycuda@rowInd=as.double(rep(0,length(test.data$dataframe)))
   mycuda@colInd=as.double(rep(0,length(test.data$colind)))
   mycuda=download(mycuda)
-  all.equal(mycuda@data,test.data$dataframe)
-  all.equal(mycuda@rowInd,test.data$rowind)
-  all.equal(mycuda@colInd,test.data$colind)
+  expect_equal(mycuda@data,test.data$dataframe)
+  expect_equal(mycuda@rowInd,test.data$rowind)
+  expect_equal(mycuda@colInd,test.data$colind)
   dyn.unload(lib_file)
 })
 
 
+test_that("Matrix sum",{
+  dll_lib="src/kernel.dll"
+  SO_lib="src/CUDA.so"
+  lib_file=dll_lib
+  dyn.load(lib_file)
+  k=100
+  test.data=sparseData(row=k,col=k,nonzero=k*k/2)
+  mycuda=CUDAispase(test.data$dataframe,test.data$rowNum,test.data$colNum,test.data$rowind,test.data$colind)
+  mycuda=upload(mycuda)
+  col_result=colSums(mycuda)
+  row_result=rowSums(mycuda)
+  expect_equal(col_result,base::colSums(test.data$dataMatrix))
+  expect_equal(row_result,base::rowSums(test.data$dataMatrix))
+  dyn.unload(lib_file)
+})
 

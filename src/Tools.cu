@@ -16,7 +16,7 @@ __host__ __device__
 void errorPrint(char * msg)
 {
 #ifndef  __CUDA_ARCH__
-	std::cout << msg << std::endl;
+	std::cout << msg << std::endl; 
 #endif
 }
 
