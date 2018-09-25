@@ -12,9 +12,7 @@ CUDAispase<-function(data,rowNum,colNum,rowInd,colInd){
 }
 
 
-setGeneric(name="upload",def=function(obj){
-  standardGeneric("upload")
-})
+setGeneric(name="upload",def=function(obj){standardGeneric("upload")})
 setMethod(f="upload",signature = "CUDAispase",
           definition=function(obj){
             obj@GPUaddress=as.double(rep(0,9))
@@ -26,9 +24,7 @@ setMethod(f="upload",signature = "CUDAispase",
             return(obj)
           })
 
-setGeneric(name="download",def=function(obj){
-  standardGeneric("download")
-})
+setGeneric(name="download",def=function(obj){standardGeneric("download")})
 setMethod(f="download",signature = "CUDAispase",
           definition=function(obj){
             if(length(obj@GPUaddress)==0){
@@ -42,11 +38,30 @@ setMethod(f="download",signature = "CUDAispase",
             return(obj)
           })
 
+rowSums=getGeneric(f="rowSums")
+#setGeneric(name="rowSums",def=function(obj){standardGeneric("rowSums")})
+setMethod(f="rowSums",signature = c("CUDAispase"),
+          definition = function(obj){
+            if(length(obj@GPUaddress)==0){
+              stop("The GPU data does not exist")
+            }
+            sumResult=as.double(rep(0,obj@rowNum))
+            result=.C("colSums",
+                      as.integer(1),obj@GPUaddress,sumResult)
+            sumResult=result[[length(result)]]
+            return(sumResult)
+          })
 
-
-
-
-
-
-
-
+#setGeneric(name="colSums",def=function(obj){standardGeneric("colSums")})
+colSums=getGeneric(f="colSums")
+setMethod(f="colSums",signature = c("CUDAispase"),
+          definition = function(obj){
+            if(length(obj@GPUaddress)==0){
+              stop("The GPU data does not exist")
+            }
+            sumResult=as.double(rep(0,obj@rowNum))
+            result=.C("colSums",
+                      as.integer(2),obj@GPUaddress,sumResult)
+            sumResult=result[[length(result)]]
+            return(sumResult)
+          })

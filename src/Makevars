@@ -31,7 +31,7 @@ OBJECTS = $(CU_SHAREDLIBS) $(CPP_SHAREDLIBS)
 all: rcppcuda.so
 
 rcppcuda.so: $(OBJECTS)
-	 $(NVCC) ${PKG_LIBS} -o CUDA.so --shared $(CU_SHAREDLIBS) 
+	 $(NVCC) ${PKG_LIBS} -o kernel.dll --shared $(CU_SHAREDLIBS) 
 
 %.o: %.cpp $(CPP_SOURCES)
 			$(CXX) $< -c -fPIC -I$(R_INCLUDE_DIR) -I$(RCPP_INC)  -I.
