@@ -1,0 +1,10 @@
+Package: CUDAsparse
+Title: Manage the sparse gene data
+Version: 0.0.0.9000
+Authors@R: person("Jiefei", "Wang", email = "jiefei.wang@roswellpark.org", role = c("aut", "cre"))
+Description: This package is a high-level implementation of the matrix operation of the sparse data. It is designed to be used with TENxMatrix package
+Depends: R (>= 3.5.0), Matrix
+License: MIT License
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat
