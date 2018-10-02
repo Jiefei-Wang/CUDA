@@ -43,3 +43,5 @@ rcppcuda.so: ${OBJECTS}
 
 %.obj: %.cu $(cu_sources)
 			$(NVCC)  -I$(CUDA_INC) -I$(R_INC)   $< -c  -I.  
+clean: 
+			rm -f *.o 

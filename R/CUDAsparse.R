@@ -11,7 +11,6 @@ CUDAispase<-function(data,rowNum,colNum,rowInd,colInd){
   return(obj)
 }
 
-
 setGeneric(name="upload",def=function(obj){standardGeneric("upload")})
 setMethod(f="upload",signature = "CUDAispase",
           definition=function(obj){
@@ -37,31 +36,30 @@ setMethod(f="download",signature = "CUDAispase",
             obj@colInd=result[[3]]
             return(obj)
           })
-
-rowSums=getGeneric(f="rowSums")
-#setGeneric(name="rowSums",def=function(obj){standardGeneric("rowSums")})
-setMethod(f="rowSums",signature = c("CUDAispase"),
-          definition = function(obj){
-            if(length(obj@GPUaddress)==0){
+#rowSums=getGeneric(f="rowSums")
+setGeneric(name="rowSums",signature = c("x"))
+setMethod(f="rowSums",
+          signature = signature(x="CUDAispase"),
+          definition = function(x,na.rm=FALSE,dims=1){
+            if(length(x@GPUaddress)==0){
               stop("The GPU data does not exist")
             }
-            sumResult=as.double(rep(0,obj@rowNum))
+            sumResult=as.double(rep(0,x@rowNum))
             result=.C("colSums",
-                      as.integer(1),obj@GPUaddress,sumResult)
+                      as.integer(1),x@GPUaddress,sumResult)
             sumResult=result[[length(result)]]
             return(sumResult)
           })
-
-#setGeneric(name="colSums",def=function(obj){standardGeneric("colSums")})
-colSums=getGeneric(f="colSums")
-setMethod(f="colSums",signature = c("CUDAispase"),
-          definition = function(obj){
-            if(length(obj@GPUaddress)==0){
+#colSums=getGeneric(f="colSums")
+setGeneric(name="colSums",signature = c("x"))
+setMethod(f="colSums",signature = signature(x="CUDAispase"),
+          definition = function(x,na.rm=FALSE,dims=1){
+            if(length(x@GPUaddress)==0){
               stop("The GPU data does not exist")
             }
-            sumResult=as.double(rep(0,obj@rowNum))
+            sumResult=as.double(rep(0,x@rowNum))
             result=.C("colSums",
-                      as.integer(2),obj@GPUaddress,sumResult)
+                      as.integer(2),x@GPUaddress,sumResult)
             sumResult=result[[length(result)]]
             return(sumResult)
           })
